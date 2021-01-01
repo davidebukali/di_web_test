@@ -64,7 +64,6 @@ jobs:
         env:
           HOST: ${{ env.HOST }}
           USERNAME: ${{ env.USERNAME }}
-          PORT: ${{ secrets.PORT }}
           KEY: ${{ secrets.KEY }}
         with:
           source: 'deploy_script'
