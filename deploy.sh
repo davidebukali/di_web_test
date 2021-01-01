@@ -13,13 +13,13 @@ then
 fi
 
 # Make sure name matches name used on git and branches being deployed
-APP_NAME="DIwebsite-redesign"
+APP_NAME="di_web_test"
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 APP_DIR=$SCRIPT_DIR'/'$APP_NAME
 DATABASE_BACKUP=$SCRIPT_DIR'/database_backup'
 DATABASE_NAME='di_website'
 DOCKER_STORAGE='diwebsite_db;index_db'
-REPOSITORY="git@github.com:devinit/"$APP_NAME".git"
+REPOSITORY="git@github.com:davidebukali/"$APP_NAME".git"
 ACTIVE_BRANCH=$BRANCH
 ENVIRONMENT=$ENVIRONMENT
 STAGING_IP=
