@@ -140,6 +140,7 @@ function perform_git_operations {
         {
             # Move back to root directory
             log  "Cloning new content from active branch "$ACTIVE_BRANCH
+            git init
             git fetch
             git stash
             git checkout $ACTIVE_BRANCH
