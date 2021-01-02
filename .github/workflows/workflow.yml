@@ -68,4 +68,32 @@ jobs:
           KEY: ${{ secrets.KEY }}
         with:
           source: 'deploy_script'
-          target: '.'
+          target: './python_projects/di_website/'
+
+      - name: run deployment
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ env.HOST }}
+          username: ${{ env.USERNAME }}
+          key: ${{ secrets.KEY }}
+          port: ${{ secrets.PORT }}
+          script: |
+            export BRANCH=${{ env.BRANCH }}
+            export RABBITMQ_PASSWORD=${{ secrets.RABBITMQ_PASSWORD }}
+            export ELASTIC_SEARCH_URL=${{ secrets.ELASTIC_SEARCH_URL }}
+            export ELASTIC_PASSWORD=${{ secrets.ELASTIC_PASSWORD }}
+            export SECRET_KEY="${{ secrets.SECRET_KEY }}"
+            export ELASTIC_USERNAME=${{ secrets.ELASTIC_USERNAME }}
+            export ENVIRONMENT=${{ env.ENVIRONMENT }}
+            export CELERY_BROKER_URL=${{ secrets.CELERY_BROKER_URL }}
+            export DATABASE_URL=${{ secrets.DATABASE_URL }}
+            export DEFAULT_FROM_EMAIL=${{ secrets.DEFAULT_FROM_EMAIL }}
+            export EMAIL_HOST=${{ secrets.EMAIL_HOST }}
+            export EMAIL_BACKEND=${{ secrets.EMAIL_BACKEND }}
+            export EMAIL_HOST_USER=${{ secrets.EMAIL_HOST_USER }}
+            export EMAIL_HOST_PASSWORD=${{secrets.EMAIL_HOST_PASSWORD }}
+            export HS_API_KEY=${{ secrets.HS_API_KEY }}
+            export HS_TICKET_PIPELINE=${{ secrets.HS_TICKET_PIPELINE }}
+            export HS_TICKET_PIPELINE_STAGE=${{ secrets.HS_TICKET_PIPELINE_STAGE }}
+            cp -r ./python_projects/di_website/deploy_script/deploy.sh ./python_projects/di_website/
+            chmod +x ./python_projects/di_website/deploy.sh && ./python_projects/di_website/deploy.sh run
