@@ -132,6 +132,7 @@ function elastic_search_reindex {
 function perform_git_operations {
 
     start_new_process "Performing git operation on branch $ACTIVE_BRANCH of repository $REPOSITORY"
+    log "Performing git operation on directory $APP_DIR"
 
     if [ -d $APP_DIR ]; then
         cd $APP_DIR
