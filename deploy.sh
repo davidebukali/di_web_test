@@ -132,7 +132,6 @@ function elastic_search_reindex {
 function perform_git_operations {
 
     start_new_process "Performing git operation on branch $ACTIVE_BRANCH of repository $REPOSITORY"
-    log "Performing git operation on directory $APP_DIR"
 
     if [ -d $APP_DIR ]; then
         cd $APP_DIR
@@ -140,7 +139,6 @@ function perform_git_operations {
         {
             # Move back to root directory
             log  "Cloning new content from active branch "$ACTIVE_BRANCH
-            git init
             git fetch
             git stash
             git checkout $ACTIVE_BRANCH
