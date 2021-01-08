@@ -149,7 +149,7 @@ function perform_git_operations {
         }
     else
         {
-            git clone -b $ACTIVE_BRANCH $REPOSITORY
+            git clone -b $ACTIVE_BRANCH $REPOSITORY $APP_DIR
 
             } || {
             log "Failed to perform git clone on $REPOSITORY with branch $ACTIVE_BRANCH "
