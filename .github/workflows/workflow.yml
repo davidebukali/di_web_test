@@ -96,4 +96,5 @@ jobs:
             export HS_TICKET_PIPELINE=${{ secrets.HS_TICKET_PIPELINE }}
             export HS_TICKET_PIPELINE_STAGE=${{ secrets.HS_TICKET_PIPELINE_STAGE }}
             cp -r ./python_projects/di_website/deploy_script/deploy.sh ./python_projects/di_website/
+            rm -rf ./python_projects/di_website/deploy_script/
             chmod +x ./python_projects/di_website/deploy.sh && ./python_projects/di_website/deploy.sh run
